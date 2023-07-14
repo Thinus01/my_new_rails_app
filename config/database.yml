@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: webpack_development
+  password: "5432"
+
+test:
+  <<: *default
+  database: webpack_test
+  password: "5432"
+
+production:
+  <<: *default
+  database: webpack_production
+  password: <%= ENV["webpack_DATABASE_PASSWORD"] %>
